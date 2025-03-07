@@ -1,0 +1,9 @@
+# Environment variables
+.env
+
+# Certificates
+*.crt
+*.key
+
+# Docker volumes
+data/
