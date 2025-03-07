@@ -1,0 +1,7 @@
+minio.local {
+    forward . 127.0.0.11:53
+}
+
+*.minio.local {
+    forward . 127.0.0.11:53
+}
