@@ -53,7 +53,7 @@ const uploadFileToS3 = async () => {
 
     const params = {
         Bucket: S3_BUCKET_NAME,
-        Key: fileName,  // The key (file name) in the S3 bucket
+        Key: Date.now() + '-' + fileName,  // Add a timestamp to the file name to ensure uniqueness
         Body: fileStream,
         ContentType: mimeType,
     };
