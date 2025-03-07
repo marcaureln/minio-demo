@@ -1,0 +1,31 @@
+services:
+  minio:
+    image: minio/minio:RELEASE.2025-02-28T09-55-16Z
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    command: server /data --console-address ":9001"
+    volumes:
+      - ${PWD}/minio/data:/data
+    env_file:
+      - ${PWD}/minio/.env
+
+  caddy:
+    image: caddy:2.9.1
+    ports:
+      - "443:443"
+    volumes:
+      - ${PWD}/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ${PWD}/caddy/certs:/root/.caddy/certs:ro
+    depends_on:
+      - minio
+
+  coredns:
+    image: coredns/coredns:1.12.0
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+    volumes:
+      - ${PWD}/coredns/Corefile:/etc/coredns/Corefile:ro
+    command: -conf /etc/coredns/Corefile
+  
