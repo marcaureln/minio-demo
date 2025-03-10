@@ -1,4 +1,0 @@
-minio.local {
-    reverse_proxy minio:9000
-    tls /root/.caddy/certs/minio.crt /root/.caddy/certs/minio.key
-}
