@@ -44,3 +44,9 @@ The API should be available at [http://localhost:9000]. Files in public buckets 
 ## Going into Production
 
 In production, you should consider deploying MinIO in a [multi-node multi-drive configuration](https://min.io/docs/minio/linux/operations/install-deploy-manage/deploy-minio-multi-node-multi-drive.html). You can also use Kubernetes if your infrasctructure is already using it.
+
+You can run a demo of the multi-node multi-drive configuration using Docker Compose by running the following command:
+
+```bash
+docker compose -f multi-node.compose.yml up -d
+```
